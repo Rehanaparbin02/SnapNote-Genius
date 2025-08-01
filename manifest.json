@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "SnapNote Genius",
-  "version": "1.0",
-  "description": "Take notes by highlighting text on any webpage",
+  "version": "1.1.0",
+  "description": "Advanced note-taking by highlighting text and capturing images on any webpage with AI-powered features",
   "permissions": [
     "activeTab",
     "storage",
-    "scripting"
+    "scripting",
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -18,22 +19,49 @@
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
-      "css": ["content.css"]
+      "css": ["content.css"],
+      "run_at": "document_end"
     }
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Web Highlighter Notes"
+    "default_title": "SnapNote Genius - Quick Notes & Highlights"
   },
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "commands": {
+    "toggle-highlight": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H",
+        "mac": "Command+Shift+H"
+      },
+      "description": "Toggle text highlight mode"
+    },
+    "toggle-image": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+I",
+        "mac": "Command+Shift+I"
+      },
+      "description": "Toggle image capture mode"
+    },
+    "open-popup": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+N",
+        "mac": "Command+Shift+N"
+      },
+      "description": "Open notes popup"
+    }
+  },
   "web_accessible_resources": [
     {
-      "resources": ["popup.html", "popup.js", "popup.css"],
+      "resources": ["popup.html", "popup.js", "popup.css", "icons/*"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'"
+  }
 }
