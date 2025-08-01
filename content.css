@@ -1,0 +1,183 @@
+/* Content script styles for web highlighter and image capture */
+
+/* Highlight mode cursor */
+.highlight-mode-active {
+  cursor: crosshair !important;
+}
+
+.highlight-mode-active * {
+  cursor: crosshair !important;
+}
+
+/* Image capture mode cursor */
+.image-mode-active {
+  cursor: copy !important;
+}
+
+.image-mode-active * {
+  cursor: copy !important;
+}
+
+/* Image capture hover effect */
+.image-capturable {
+  transition: all 0.2s ease !important;
+  cursor: copy !important;
+}
+
+.image-capturable:hover {
+  opacity: 0.8 !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3) !important;
+  border: 2px solid #2196f3 !important;
+  border-radius: 4px !important;
+}
+
+/* Highlighted text animation */
+.web-highlighter-highlight {
+  background-color: #ffeb3b !important;
+  background-image: linear-gradient(120deg, #ffeb3b 0%, #ffc107 100%) !important;
+  color: #333 !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  animation: highlightPulse 2s ease-in-out !important;
+  transition: all 0.3s ease !important;
+}
+
+@keyframes highlightPulse {
+  0% { 
+    background-color: #ffeb3b;
+    transform: scale(1);
+  }
+  50% { 
+    background-color: #ff9800;
+    transform: scale(1.02);
+  }
+  100% { 
+    background-color: #ffeb3b;
+    transform: scale(1);
+  }
+}
+
+/* Temporary highlight overlay */
+.web-highlighter-temp-highlight {
+  background: linear-gradient(120deg, rgba(255, 235, 59, 0.7) 0%, rgba(255, 193, 7, 0.7) 100%);
+  border: 2px solid #ffc107;
+  border-radius: 4px;
+  animation: tempHighlightFade 2s ease-in-out forwards;
+}
+
+/* Image capture effect */
+.web-highlighter-image-capture-effect {
+  background: linear-gradient(45deg, rgba(33, 150, 243, 0.6) 0%, rgba(76, 175, 80, 0.6) 100%);
+  border: 3px solid #2196f3;
+  border-radius: 8px;
+  animation: imageCaptureEffect 1s ease-in-out forwards;
+}
+
+@keyframes imageCaptureEffect {
+  0% { 
+    opacity: 0;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.7);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(33, 150, 243, 0);
+  }
+  100% { 
+    opacity: 0;
+    transform: scale(1);
+    box-shadow: 0 0 0 20px rgba(33, 150, 243, 0);
+  }
+}
+
+/* Notification styles */
+.web-highlighter-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #2196f3;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  max-width: 300px;
+  animation: slideInRight 0.3s ease-out;
+  transition: opacity 0.3s ease;
+}
+
+.web-highlighter-notification-success {
+  background: #4caf50;
+}
+
+.web-highlighter-notification-error {
+  background: #f44336;
+}
+
+.web-highlighter-notification-info {
+  background: #2196f3;
+}
+
+.web-highlighter-notification.fade-out {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Overlay for highlight mode indicator */
+.web-highlighter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+/* Selection styling override */
+.highlight-mode-active ::selection {
+  background: rgba(255, 235, 59, 0.6) !important;
+  color: #333 !important;
+}
+
+.highlight-mode-active ::-moz-selection {
+  background: rgba(255, 235, 59, 0.6) !important;
+  color: #333 !important;
+}
+
+/* Prevent text selection issues */
+.web-highlighter-highlight {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .web-highlighter-notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}
