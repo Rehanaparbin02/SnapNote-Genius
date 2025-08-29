@@ -59,18 +59,36 @@ A powerful Chrome extension that allows you to take notes by simply highlighting
 
 ```
 web-highlighter-notes/
-├── manifest.json          # Extension configuration
-├── background.js          # Service worker for data management
-├── content.js            # Content script for text highlighting
-├── content.css           # Styles for highlighting interface
-├── popup.html            # Extension popup HTML
-├── popup.js              # React-based popup interface
-├── popup.css             # Popup styling
-├── icons/                # Extension icons (optional)
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-└── README.md             # This file
+├── public/                     # Static assets that don't need compilation
+│   └── icons/
+│       ├── icon16.png
+│       ├── icon48.png
+│       └── icon128.png
+├── src/                        # All source code (JS, CSS, HTML, etc.)
+│   ├── background/
+│   │   └── background.js       # Service worker for background tasks
+│   ├── content/
+│   │   ├── content.js          # Content script (interacts with webpages)
+│   │   └── content.css         # CSS for content script injected elements
+│   ├── popup/
+│   │   ├── components/         # Reusable React components for the popup
+│   │   │   ├── NoteItem.js
+│   │   │   └── SearchBar.js
+│   │   │   └── ...
+│   │   ├── lib/                # Third-party libraries (like React) downloaded locally
+│   │   │   └── react/
+│   │   │       ├── react.production.min.js
+│   │   │       └── react-dom.production.min.js
+│   │   ├── popup.js            # Main React app for the popup UI
+│   │   └── popup.css           # CSS for the popup UI
+│   ├── utils/                  # Helper functions, error handling, constants
+│   │   ├── api.js              # Functions for Chrome API interactions
+│   │   ├── helpers.js
+│   │   └── errorHandler.js
+│   └── popup.html              # The main HTML file for the extension popup
+├── manifest.json               # The extension manifest file
+├── README.md                   # Project README
+└── extrafeatures.txt           # Additional features brainstorm
 ```
 
 ## Usage Guide

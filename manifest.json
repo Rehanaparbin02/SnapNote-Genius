@@ -62,6 +62,6 @@
     }
   ],
   "content_security_policy": {
-    "extension_pages": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'"
+    "extension_pages": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js; object-src 'self'"
   }
 }
